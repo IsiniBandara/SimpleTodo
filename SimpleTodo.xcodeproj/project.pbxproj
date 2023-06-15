@@ -13,6 +13,8 @@
 		413CC1972A2E35EC002AE972 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 413CC1962A2E35EC002AE972 /* Preview Assets.xcassets */; };
 		413CC1992A2E35EC002AE972 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413CC1982A2E35EC002AE972 /* Persistence.swift */; };
 		413CC19C2A2E35EC002AE972 /* SimpleTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 413CC19A2A2E35EC002AE972 /* SimpleTodo.xcdatamodeld */; };
+		413CC1A82A2E416A002AE972 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413CC1A72A2E416A002AE972 /* Home.swift */; };
+		413CC1AA2A2E482F002AE972 /* CustomFilteringDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413CC1A92A2E482F002AE972 /* CustomFilteringDataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		413CC1962A2E35EC002AE972 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		413CC1982A2E35EC002AE972 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		413CC19B2A2E35EC002AE972 /* SimpleTodo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleTodo.xcdatamodel; sourceTree = "<group>"; };
+		413CC1A72A2E416A002AE972 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		413CC1A92A2E482F002AE972 /* CustomFilteringDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFilteringDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 		413CC18E2A2E35EA002AE972 /* SimpleTodo */ = {
 			isa = PBXGroup;
 			children = (
+				413CC1A22A2E4097002AE972 /* View */,
 				413CC18F2A2E35EA002AE972 /* SimpleTodoApp.swift */,
 				413CC1912A2E35EA002AE972 /* ContentView.swift */,
 				413CC1932A2E35EC002AE972 /* Assets.xcassets */,
@@ -71,6 +76,15 @@
 				413CC1962A2E35EC002AE972 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		413CC1A22A2E4097002AE972 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				413CC1A72A2E416A002AE972 /* Home.swift */,
+				413CC1A92A2E482F002AE972 /* CustomFilteringDataView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,7 +159,9 @@
 			files = (
 				413CC1992A2E35EC002AE972 /* Persistence.swift in Sources */,
 				413CC1922A2E35EA002AE972 /* ContentView.swift in Sources */,
+				413CC1A82A2E416A002AE972 /* Home.swift in Sources */,
 				413CC1902A2E35EA002AE972 /* SimpleTodoApp.swift in Sources */,
+				413CC1AA2A2E482F002AE972 /* CustomFilteringDataView.swift in Sources */,
 				413CC19C2A2E35EC002AE972 /* SimpleTodo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
