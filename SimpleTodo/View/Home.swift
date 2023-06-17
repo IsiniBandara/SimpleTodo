@@ -21,27 +21,45 @@ struct Home: View {
             .labelsHidden()
             .datePickerStyle(.graphical)
             
-            DisclosureGroup(isExpanded: $showPendingTasks){
-                /// Custom  core data filter view, which will display only pending tasks on this day
-                CustomFilteringDataView(displayPendingTask: true, filterDate: filterDate){
-                    TaskRow(task: $0, isPendingTask: true)
+            CustomFilteringDataView(filterDate: $filterDate){ pendingTasks, completedTasks in
+                DisclosureGroup(isExpanded: $showPendingTasks){
+                    /// Custom  core data filter view, which will display only pending tasks on this day
+                    
+                    if pendingTasks.isEmpty{
+                       Text("No Task's found")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    } else{
+                        ForEach(pendingTasks){
+                            TaskRow(task: $0, isPendingTask: true)
+                        }
+                    }
+
+                    
+                } label: {
+                    Text("Pending Task's \(pendingTasks.isEmpty ? "" : "(\(pendingTasks.count))")")
+                        .font(.caption)
+                        .foregroundColor(.gray)
                 }
                 
-            } label: {
-                Text("Pending Task's")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-            }
-            
-            DisclosureGroup(isExpanded: $showCompletedTasks){
-                /// Custom  core data filter view, which will display only completed tasks on this day
-                CustomFilteringDataView(displayPendingTask: false, filterDate: filterDate){
-                    TaskRow(task: $0, isPendingTask: false)
+                DisclosureGroup(isExpanded: $showCompletedTasks){
+                    /// Custom  core data filter view, which will display only completed tasks on this day
+              
+                    if completedTasks.isEmpty{
+                        Text("No Task's found")
+                             .font(.caption)
+                             .foregroundColor(.gray)
+                    } else{
+                        ForEach(completedTasks){
+                            TaskRow(task: $0, isPendingTask: false)
+                        }
+                    }
+
+                } label: {
+                    Text("Completed Task's \(completedTasks.isEmpty ? "" : "(\(completedTasks.count))")")
+                        .font(.caption)
+                        .foregroundColor(.gray)
                 }
-            } label: {
-                Text("Completed Task's")
-                    .font(.caption)
-                    .foregroundColor(.gray)
             }
         }
         .toolbar{
@@ -141,13 +159,21 @@ struct TaskRow: View {
                 showKeyboard = true
             }
         }
+        .onDisappear{
+            removeEmptyTask()
+            save()
+        }
         //verifying content when user leaves the App
         .onChange(of: env.scenePhase){ newValue in
             if newValue != .active{
-                ///checking if it's empty
-                removeEmptyTask()
-                save()
-                save()
+                showKeyboard = false
+                DispatchQueue.main.async {
+                    ///checking if it's empty
+                    removeEmptyTask()
+                    save()
+                   
+                }
+
             }
         }
         //adding swipe to delete
